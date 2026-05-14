@@ -22,3 +22,44 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# miscellaneous
+/.vs
+.Thumbs.db
+*.sublime*
+.idea
+debug.log
+TODO.md
+.aider*
+# OTHER
+
+# Optional npm and yarn cache directory
+.npm/
+.yarn/
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env
+
+# .vscode workspace settings file
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# npm, yarn and bun lock files
+package-lock.json
+yarn.lock
+bun.lockb
+
+# rust compiled folders
+target/
+
+

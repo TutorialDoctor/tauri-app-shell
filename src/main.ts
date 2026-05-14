@@ -12,6 +12,7 @@ import Items from './components/Items.vue'
 import ItemDetail from './pages/ItemDetail.vue'
 import DrawThings from './components/DrawThings.vue'
 import Chat from './pages/Chat.vue'
+import APi from './pages/API.vue'
 
 const routes = [
     { path: '/', component: Home, name: 'home' },
@@ -24,6 +25,7 @@ const routes = [
     { name: 'item', path: '/item/:id', component: ItemDetail, props: true },
     { path: '/draw', component: DrawThings, name:"Draw" },
     { path: '/chat', component: Chat, name:"Chat" },
+    { path: '/api', component: APi, name:"API" },
 ]
 const router = createRouter({
     history: createMemoryHistory(),

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import Nav from "./components/Nav.vue";
 import StatusBar from "./components/StatusBar.vue";
 
