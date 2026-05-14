@@ -1,0 +1,36 @@
+/* * {outline: 1px solid red} */
+
+:root{
+    --bgColor: rgb(255, 229, 229);
+}
+/* 
+* {
+    background-color: var(--bgColor)
+} */
+
+
+/* input:focus{
+    outline: 4px solid rgb(118, 239, 197)
+}
+input,select{
+    background-color: rgb(236, 241, 248);
+} */
+
+/* button {
+    background-color: rgb(29, 142, 190);
+    color: white;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    border-radius: .5rem
+}
+ */
+
+
+/* #item-card{
+    border-radius: 1rem;
+ }
+ #item-card img{
+    border-radius: 1rem;
+ } */
+
+ 

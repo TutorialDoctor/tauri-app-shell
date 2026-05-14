@@ -1,0 +1,58 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "http:default",
+    "fs:allow-resource-read",
+    "upload:default",
+    "fs:default",
+    "fs:allow-applocaldata-write",
+    "store:default",
+    "sql:default",
+    "dialog:default",
+    "dialog:allow-save",
+    "clipboard-manager:default",
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "http://127.0.0.1:7860/sdapi/v1/txt2img"
+        },
+        {
+          "url": "http://127.0.0.1:5001"
+        },
+        {
+          "url": "http://127.0.0.1:4000"
+        },
+        {
+          "url": "http://127.0.0.1:4001"
+        }
+      ],
+      "deny": [
+        {
+          "url": "https://private.tauri.app"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        {
+          "path": "*/**"
+        },
+        {
+          "path": "$APPCONFIG/*"
+        },
+        {
+          "path": "$APPDATA/**"
+        }
+      ]
+    }
+  ]
+}

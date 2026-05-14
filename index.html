@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri + Vue 3 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+  </head>
+
+  <body>
+    <div id="app" class="bg-white dark:bg-gray-900"></div>
+    <script type="module" src="/src/main.js"></script>
+   <style>
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #afddde;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #56d3ab;
+}
+
+html,
+body {
+-ms-overflow-style: none; /* IE and Edge /
+scrollbar-width: none; / Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+display: none;
+}
+
+
+
+  </style>
+  </body>
+</html>
