@@ -18,6 +18,7 @@
     "dialog:default",
     "dialog:allow-save",
     "clipboard-manager:default",
+    "fs:allow-read-text-file",
     {
       "identifier": "http:default",
       "allow": [

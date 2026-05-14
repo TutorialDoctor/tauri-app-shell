@@ -1,1 +1,1 @@
-WHAT IS UP
+WHAT IS UP! This is fake.txt. I will get stored in the resources folder now!

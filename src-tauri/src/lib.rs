@@ -14,9 +14,13 @@ fn open_url(app: tauri::AppHandle, url: String) -> Result<(), String> {
 }
 
 // Read a text file
+use std::path::PathBuf;
+
 #[tauri::command]
-async fn read_text_file(path: String) -> Result<String, String> {
-    std::fs::read_to_string(path).map_err(|e| e.to_string())
+async fn read_text_file(path: PathBuf) -> Result<String, String> {
+    // std::fs works, but it's "blind" to Tauri's security scopes
+    // It will read any file the OS user has permission to see
+    std::fs::read_to_string(&path).map_err(|e| e.to_string())
 }
 
 // Write a text file

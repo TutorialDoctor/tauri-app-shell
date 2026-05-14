@@ -6,7 +6,6 @@ import { appDataDir, join, resolveResource } from '@tauri-apps/api/path';
 
 import { writeTextFile, readTextFile } from '@tauri-apps/plugin-fs'; 
 
-
 const store = dataStore();
 const data = ref(null);
 const endpoint = ref("https://jsonplaceholder.typicode.com/todos/1")
@@ -56,8 +55,11 @@ async function readBundleFile() {
   text.value = contents
 }
 
-// const text = await invoke("read_text_file", {
-//   path: "/resources/fake.txt",
+
+// const resourcePath = await resolveResource('resources/fake.txt');
+
+// const moreText = await invoke("read_text_file", {
+//   path: resourcePath, 
 // });
 
 // console.log(text);
