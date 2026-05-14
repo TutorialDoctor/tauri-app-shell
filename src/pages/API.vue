@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { dataStore } from "../stores/store";
-import { invoke } from "@tauri-apps/api/core";
+import { invoke, convertFileSrc } from "@tauri-apps/api/core";
 import { appDataDir, join, resolveResource } from '@tauri-apps/api/path';
 
-import { writeTextFile, readTextFile } from '@tauri-apps/plugin-fs'; 
+import { writeTextFile, readTextFile,BaseDirectory,readFile } from '@tauri-apps/plugin-fs';
 
 const store = dataStore();
 const data = ref(null);
@@ -29,30 +29,30 @@ async function getData() {
 }
 
 async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-  greetMsg.value = await invoke("greet", { name: name.value });
+    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+    greetMsg.value = await invoke("greet", { name: name.value });
 }
 
 
 async function openURL() {
-  // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-  await invoke("open_url", { url: 'https://www.google.com' });
+    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+    await invoke("open_url", { url: 'https://www.google.com' });
 }
 
 async function saveFile() {
-//   const appDataPath = await appDataDir();
-   const resourcePath = await resolveResource('resources/fake.txt');
-//   const filePath = await join(resourcePath, 'resources/fake.txt');
-  await writeTextFile(resourcePath, "Hello there");
+    //   const appDataPath = await appDataDir();
+    const resourcePath = await resolveResource('resources/fake.txt');
+    //   const filePath = await join(resourcePath, 'resources/fake.txt');
+    await writeTextFile(resourcePath, "Hello there");
 }
 
 
 async function readBundleFile() {
-  // This resolves the correct path regardless of OS
-  const resourcePath = await resolveResource('resources/fake.txt');
-  const contents = await readTextFile(resourcePath);
-  console.log(contents);
-  text.value = contents
+    // This resolves the correct path regardless of OS
+    const resourcePath = await resolveResource('resources/fake.txt');
+    const contents = await readTextFile(resourcePath);
+    console.log(contents);
+    text.value = contents
 }
 
 
@@ -64,26 +64,100 @@ async function readBundleFile() {
 
 // console.log(text);
 
-onMounted(() => {
+
+
+const imageSource = ref('');
+const videoSource = ref('');
+
+// onMounted(async () => {
+//   // 1. Get the system path
+//   const imgPath = await resolveResource('resources/my-image.png');
+//   const vidPath = await resolveResource('resources/my-video.mp4');
+
+//   // 2. Convert to asset protocol URL (e.g., asset://localhost/...)
+//   imageSource.value = convertFileSrc(imgPath);
+//   videoSource.value = convertFileSrc(vidPath);
+// });
+
+// const icon = await readFile('resources/screen.png', {
+//   baseDir: BaseDirectory.Resources,
+// });
+
+onMounted(async () => {
     console.log("API Ready!");
     // saveFile();
     readBundleFile();
+    //URL.revokeObjectURL(imageSource.value);
     // openURL();
+
+    // 1. Get the system path
+    // const imgPath = await resolveResource('screen.png');
+    // console.log(imgPath)
+    //const vidPath = await resolveResource('resources/music_vid.mp4');
+
+    // 2. Convert to asset protocol URL (e.g., asset://localhost/...)
+    // imageSource.value = convertFileSrc(imgPath);
+    // console.log(imageSource.value)
+    //videoSource.value = convertFileSrc(vidPath);
+//OTHER ATTEMPT
+    // try {
+    // 1. Read the raw bytes
+    // const contents = await readFile('screen.png', {
+    //   baseDir: BaseDirectory.Resource,
+    // });
+
+    // 2. Convert to a Blob (Binary Large Object)
+    // const blob = new Blob([contents], { type: 'image/png' });
+
+    // 3. Create a temporary URL for the template
+//     imageSource.value = URL.createObjectURL(blob);
+//     console.log(imageSource.value)
+//   } catch (err) {
+//     console.error("Failed to load icon:", err);
+//   }
 })
 </script>
 
 <template>
     <div class="p-4">
 
-        {{text}}
+        {{ text }}
 
+        ICON
+        <!-- {{icon}} -->
+
+     <img 
+      v-if="imageSource" 
+      :src="imageSource" 
+      alt="App Icon" 
+      style="width: 100px; height: auto;" 
+    />
+
+    <!-- <p v-else>Loading resource...</p> -->
+
+        <hr />
+
+        <!-- VideoAndImages -->
+        <!-- <div>
+            <img v-if="imageSource" :src="imageSource" alt="Local Resource" />
+            <video v-if="videoSource" controls>
+                <source :src="videoSource" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+         -->
+        <!-- VideoAndImages -->
         <div class="w-full">
-        <form class="flex" @submit.prevent="greet">
-            <input class="dark:bg-gray-800 dark:text-white mt-2 text-xs border border-gray-300 px-4 py-2 rounded-lg w-full" id="greet-input" v-model="name" placeholder="Enter a name..." />
-            <button class="ml-4 text-center text-xs dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-lg" type="submit">Greet</button>
-        </form>
+            <form class="flex" @submit.prevent="greet">
+                <input
+                    class="dark:bg-gray-800 dark:text-white mt-2 text-xs border border-gray-300 px-4 py-2 rounded-lg w-full"
+                    id="greet-input" v-model="name" placeholder="Enter a name..." />
+                <button
+                    class="ml-4 text-center text-xs dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-lg"
+                    type="submit">Greet</button>
+            </form>
 
-        <p class="mt-4">{{ greetMsg }}</p>
+            <p class="mt-4">{{ greetMsg }}</p>
         </div>
 
         <div class="mt-4 flex items-center space-x-4">

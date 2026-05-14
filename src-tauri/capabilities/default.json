@@ -19,6 +19,7 @@
     "dialog:allow-save",
     "clipboard-manager:default",
     "fs:allow-read-text-file",
+    "fs:allow-read-file",
     {
       "identifier": "http:default",
       "allow": [
@@ -52,6 +53,9 @@
         },
         {
           "path": "$APPDATA/**"
+        },
+        {
+          "path": "$RESOURCES/**"
         }
       ]
     }
