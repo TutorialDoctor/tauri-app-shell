@@ -10,7 +10,7 @@ const store = dataStore();
 </script>
 
 <template>
-    <div class="p-8">
+    <div class="p-8 w-full">
         <h1>TEST PAGE</h1>
         <!-- <Progressbar /> -->
          <!-- <Chat/> -->

@@ -27,66 +27,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        <div id="music" class="h-auto col-span-5 empty">
+
+        <div id="music" class="w-full h-auto col-span-5 empty">
             <div class="flex justify-start gap-x-6">
-                <aside id="leftnav" class="hidden md:block w-1/5 p-4">
 
-                    <p class="text-sm font-light font-semibold">Discover</p>
-                    <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie settings here.</p>
-
-                    <div class="mt-4 grid gap-y-4">
-                        <div v-for="setting in ['Listen Now']"
-                            class="bg-gray-100 dark:bg-gray-800 p-2 rounded-md flex justify-start items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-inbox" viewBox="0 0 16 16">
-                                <path
-                                    d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z" />
-                            </svg>
-                            <div class="ml-3 col-span-10">
-                                <p class="text-xs">{{ setting }}</p>
-                            </div>
-                            <div class="ml-auto text-xs">
-                                <p>128</p>
-                            </div>
-                        </div>
-                        <div v-for="setting in ['Drafts', 'Sent', 'Junk', 'Trash', 'Archive']"
-                            class="p-2 rounded-md flex justify-start items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-inbox" viewBox="0 0 16 16">
-                                <path
-                                    d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z" />
-                            </svg>
-                            <div class="ml-3 col-span-10">
-                                <p class="text-xs">{{ setting }}</p>
-                            </div>
-                            <div class="ml-auto text-xs">
-                                <p>128</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div v-for="setting in ['Social', 'Updates', 'Forums', 'Shopping', 'Promotions']"
-                            class="p-2 rounded-md flex justify-start items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-inbox" viewBox="0 0 16 16">
-                                <path
-                                    d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z" />
-                            </svg>
-                            <div class="ml-2 col-span-10">
-                                <p class="text-xs">{{ setting }}</p>
-                            </div>
-                            <div class="ml-auto text-xs">
-                                <p>128</p>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="text-center text-xs border border-gray-300 px-4 py-2 rounded-lg w-full">Save
-                                Preferences</button>
-                        </div>
-                    </div>
-
-                </aside>
-                <div id="main" class="md:p-8 mt-8 w-full md:w-3/4">
+                <div id="itemDetails" class="md:p-8 mt-8 w-full">
 
 
                     <div class="flex justify-between">
@@ -121,15 +66,15 @@ onMounted(() => {
                     <!-- v-if is critical when defaulting item to null -->
                     <div class="mt-4 flex" v-if="item">
                         <div class="empty">
-                            <img class="hover:opacity-75 border h-[260px] w-[200px] rounded-md object-contain"
+                            <img class="hover:opacity-75 border h-[260px] w-auto rounded-md object-contain"
                                 :src="item.cover" />
                         </div>
                         <header id="header-1" class="ml-4 ">
                             <p class="hidden font-medium text-xl">{{ item.label }}</p>
-                            <input v-model="item.label" class="font-medium text-xl outline-none"><br/>
+                            <input v-model="item.label" class="dark:bg-gray-900 dark:text-white mt-2 w-full outline-none"><br/>
                             <p class="hidden text-gray-500 dark:text-gray-200" style="font-size: .75rem">{{ item.description }}</p>
-                            <input v-model="item.description" class="text-gray-500 dark:text-gray-200 outline-none" style="font-size: .75rem"><br/>
-                            <input v-model="item.cover" class="w-full rounded-md px-2 text-bg-100 border outline-none" style="font-size: .75rem">
+                            <input v-model="item.description" class="dark:bg-gray-900 dark:text-white mt-2 text-xs w-full outline-none" style="font-size: .75rem"><br/>
+                            <input v-model="item.cover" class="dark:bg-gray-900 dark:text-white mt-2 text-xs w-full outline-none" style="font-size: .75rem">
                         </header>
                     </div>
                     <div v-else>
@@ -223,63 +168,9 @@ onMounted(() => {
 
 
                 </div>
-                <aside id="rightnav" class="hidden md:block w-1/5 p-4">
 
-
-                    <p class="text-sm font-light font-semibold">Discover</p>
-                    <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie settings here.</p>
-
-
-                    <div id="sidebar-settings" class="h-auto mt-4 p-4 rounded-lg border border-gray-300 shadow-md">
-
-                        <p class="text-xs font-light font-semibold">Cookie Settings</p>
-                        <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie settings here.</p>
-
-                        <div class="mt-4 grid gap-y-4">
-                            <div>
-                                <p class="text-xs">First Name</p>
-                                <p class="text-gray-500 dark:text-gray-200" style="font-size: .60rem">These cookies are essential in order
-                                    to use
-                                    the website and
-                                    it's features</p>
-                                <input class="mt-2 text-xs border border-gray-300 px-4 py-2 rounded-lg w-full"
-                                    placeholder="Enter your name">
-                            </div>
-                            <div v-for="setting in ['Strictly Neccesary', 'Functional Cookies', 'Performance Cookies']"
-                                class="flex justify-between items-center">
-                                <div class="col-span-10">
-                                    <p class="text-xs">{{ setting }}</p>
-                                    <p class="text-gray-500 dark:text-gray-200" style="font-size: .60rem">These cookies are essentil in
-                                        order to
-                                        use the website and
-                                        it's features</p>
-                                </div>
-                                <div class="ml-4">
-                                    <button type="button" role="switch" aria-checked="true" data-state="checked"
-                                        value="on"
-                                        class="peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed bg-black disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
-                                        id="necessary" aria-label="Necessary"><span data-state="checked"
-                                            class="pointer-events-none block h-4 w-4 rounded-full bg-white dark:bg-gray-900 shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"></span></button>
-                                </div>
-                            </div>
-                            <div>
-                                <button
-                                    class="text-center text-xs border border-gray-300 px-4 py-2 rounded-lg w-full">Save
-                                    Preferences</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </aside>
             </div>
         </div>
 
-
-
-
-    </div>
 
 </template>

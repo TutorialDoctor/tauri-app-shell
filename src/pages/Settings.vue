@@ -58,6 +58,7 @@ const setting_groups = [
         group: "Artificial Intelligence", 
         description: "This is how others will see you on the site",
         fields: [
+             { label: "AI Avatar", type: "textField", tooltip: "input box", model: "aiAvatar" },
             { label: "Default Model", type: "textField", tooltip: "select box", model: "defaultModel" },
             { label: "LLM MODEL", type: "dropdown", tooltip: "select box", model: "llm", options: ['llama3.2', 'deepseek-r1:8b', 'gemma3:4b'] },
             { label: "TTS MODEL", type: "dropdown", tooltip: "select box", model: "tts", options: ['kitten', 'kokoro', 'e5'] },
@@ -103,7 +104,7 @@ const currentSetting = computed(() =>
 </script>
 
 <template>
-    <div class="h-screen flex justify-start gap-x-6 col-span-4 empty">
+    <div class="h-screen flex w-4/5 justify-start gap-x-6 col-span-4 empty">
         <!-- Sidebar -->
         <aside class="hidden w-1/5 mt-4">
             <div v-for="section in setting_groups" :key="section.group" @click="current_section = section.group"

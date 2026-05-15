@@ -1,8 +1,9 @@
 /* * {outline: 1px solid red} */
 
-:root{
+:root {
     --bgColor: rgb(255, 229, 229);
 }
+
 /* 
 * {
     background-color: var(--bgColor)
@@ -33,4 +34,10 @@ input,select{
     border-radius: 1rem;
  } */
 
- 
+select {
+    -webkit-appearance: none;
+    background-image:url(/images/chevron-down.svg); 
+    background-repeat:no-repeat; 
+    background-position:calc(100% - 10px);
+    background-size: 1rem
+}

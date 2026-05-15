@@ -31,6 +31,7 @@ export const dataStore = defineStore("dataStore", {
             settings: {
                 appName: "Tauri App Shell"
             },
+            chat_history: ["Hi, how can I help you today?", "Actually, I've been trying to log into my account for hours, but it keeps saying that my password is incorrect.", "Sorry to hear that. Can you tell me a little bit more about what's happening? Are you getting an error message or anything else when you try to log in?", "Yeah, all I get is this 'Invalid username or password' message. It's so frustrating!", "Okay, let me walk you through the next steps. Have you tried resetting your password by clicking on the 'Forgot Password' link on our website?", "Actually, I did that already, but it just took me back to the login page with the same error message.", "I see. That's frustrating. Can you try clearing your browser's cache and cookies, then try logging in again?", "Hmm, I'm not sure if that will work since my issue is probably more complex than a simple browser glitch.", "In any case, our team should be able to help you out. Can you please provide me with your account email address so I can look into this further?", "Okay... let me check on the status of your account. (pause) Okay, it looks like we do have some issues with your account. I'm going to go ahead and reset your password for you.", "Great, thank you so much! I really appreciate your help. Can you also please explain why this is happening?", "I'd be happy to explain what might be causing the issue. Sometimes our systems can get a bit wonky due to technical issues or user errors. In your case, it looks like there may have been an issue with the password hashing algorithm.", "Okay, got it. I'll make sure to pass that on to our development team so they can look into it. Can you please confirm that your new password is working properly?", "Yeah, just tried logging in again and everything seems fine now. Thanks again for your help! You've been a lifesaver.", "You're welcome! I'm glad we could resolve the issue. If you have any other questions or concerns, feel free to ask.", "By the way, would you like me to provide some additional tips on how to keep your account secure in the future? We also offer a tutorial on password management and security best practices if you're interested.", "That sounds great, thank you! I'd love to learn more about how to keep my account safe. Can you send me that tutorial somehow?", "Of course, I can email it to you right away. (email sent) If you have any other questions or need further assistance, don't hesitate to reach out.", "Okay, thanks again for your help today! Have a great day and happy logging in from now on!", "You're welcome! Take care, and we'll see you next time you log in.", "One more thing..."],
             history: []
         }
     },
@@ -69,6 +70,28 @@ export const dataStore = defineStore("dataStore", {
                 this.setStatusMessage("Saved items to database");
             } catch (error) {
                 console.error("Issue saving items to database", error);
+            }
+        },
+         async getChatHistory() {
+            if (await this.db.get('chatHistory') != undefined) {
+                this.chat_history = await this.db.get("chatHistory")
+                this.setStatusMessage("Got backed up chat history");
+                // this.initialized = true
+            } else {
+                // this.saved_settings = this.settings
+                this.setStatusMessage("No chat history to get");
+            }
+        },
+        async saveChatHistory() {
+            //TODO  not saving passed in param
+            try {
+                await this.db.set('chatHistory', this.chat_history);
+                await this.db.save();
+
+                this.setStatusMessage("Saved chat history to database");
+            } catch (error) {
+                console.error("Issue saving chat history to database", error);
+                this.setStatusMessage("Issue saving chat history to database: " + error);
             }
         },
         async saveSettings() {

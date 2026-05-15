@@ -119,7 +119,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="p-4">
+    <div class="p-4 w-full">
 
         {{ text }}
 
@@ -135,7 +135,7 @@ onMounted(async () => {
 
     <!-- <p v-else>Loading resource...</p> -->
 
-        <hr />
+        <hr class="mt-2" />
 
         <!-- VideoAndImages -->
         <!-- <div>
@@ -148,7 +148,7 @@ onMounted(async () => {
          -->
         <!-- VideoAndImages -->
         <div class="w-full">
-            <form class="flex" @submit.prevent="greet">
+            <form class="mt-4 flex" @submit.prevent="greet">
                 <input
                     class="dark:bg-gray-800 dark:text-white mt-2 text-xs border border-gray-300 px-4 py-2 rounded-lg w-full"
                     id="greet-input" v-model="name" placeholder="Enter a name..." />

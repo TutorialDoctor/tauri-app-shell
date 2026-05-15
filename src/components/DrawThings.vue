@@ -26,7 +26,7 @@ function send() {
 </script>
 
 <template>
-    <div class="p-8">
+    <div class="p-8 w-full">
         <!-- Form -->
         <div id="form" class="p-4 rounded-lg border border-gray-300 shadow-md">
             <p class="text-xs font-light font-semibold">Draw Things</p>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Nav from "./components/Nav.vue";
 import StatusBar from "./components/StatusBar.vue";
+import Sidebar from "./components/Sidebar.vue";
+import RightNav from "./components/RightNav.vue";
 
 import './assets/styles/global.css'
 import "./assets/js/htmx.min.js";
@@ -10,8 +12,15 @@ import "./assets/js/htmx.min.js";
 <template>
   <main class="dark:text-white bg-white dark:bg-gray-900 relative">
     <Nav />
-    <RouterView class="" />
-    <StatusBar/>
+    <div id="music" class="h-auto col-span-5 empty">
+      <div class="flex justify-start gap-x-6">
+        <Sidebar v-if="$route.name !== 'Settings'" />
+        <RouterView class="" />
+        <RightNav/>
+        
+      </div>
+    </div>
+    <StatusBar />
   </main>
 </template>
 

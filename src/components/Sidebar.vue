@@ -21,7 +21,7 @@ const props = defineProps({
 
                     <div class="mt-4 grid gap-y-4">
                         <RouterLink :to="{name: setting}" v-for="setting in ['Draw','Style Guide','Settings','Chat','API']"
-                            class="capitalize p-2 rounded-md flex justify-start items-center">
+                            class="capitalize p-2 rounded-md flex justify-start items-center dark:hover:bg-gray-700 hover:bg-gray-100 dark:bg-gray-800 p-2 rounded-md cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-inbox" viewBox="0 0 16 16">
                                 <path
