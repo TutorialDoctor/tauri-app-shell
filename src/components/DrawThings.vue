@@ -6,6 +6,9 @@ import Navigation from "../components/partials/Navigation.vue";
 
 // {"sharpness":0,"controls":[],"faceRestoration":"","originalImageHeight":960,"tiledDecoding":false,"steps":12,"targetImageWidth":1728,"hiresFix":false,"targetImageHeight":960,"aestheticScore":6,"maskBlurOutset":0,"refinerModel":"","cropLeft":0,"originalImageWidth":1728,"seedMode":2,"loras":[],"cfgZeroInitSteps":0,"zeroNegativePrompt":false,"negativeAestheticScore":2.5,"strength":1,"height":960,"upscaler":"","clipSkip":2,"cropTop":0,"cfgZeroStar":false,"seed":149156595,"tiledDiffusion":false,"preserveOriginalAfterInpaint":true,"model":"dreamshaper_xl_v2.1_turbo_f16.ckpt","maskBlur":1.5,"sampler":10,"causalInferencePad":0,"batchCount":1,"batchSize":1,"shift":1,"width":1728,"guidanceScale":1,"negativeOriginalImageHeight":512,"negativeOriginalImageWidth":832}
 
+const model_selection = ref("DreamShaper XL v2.1 Turbo (8-bit)");
+//TODO: Add to settings some how
+
 let payload = ref({
     prompt: "photo of an apple with depth of field blurred background",
     negative_prompt: "cartoon, cgi, 3d render, blurry",
@@ -31,9 +34,13 @@ function send() {
         <div id="form" class="p-4 rounded-lg border border-gray-300 shadow-md">
             <p class="text-xs font-light font-semibold">Draw Things</p>
             <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: 0.7rem;">Enter your settings below.</p>
-            <div class="mt-4 grid gap-y-4">
+            <div class="grid gap-y-4">
                 
                 <img id="resultImage" src="" />
+
+                 <select v-model="model_selection"   class="h-10 dark:bg-gray-800 dark:text-white text-xs border border-gray-300 px-4 py-2 rounded-lg w-full">
+            <option value="DreamShaper XL v2.1 Turbo (8-bit)">DreamShaper XL v2.1 Turbo (8-bit)</option>
+        </select>
 
                 <div class="flex justify-between items-center">
                     <div class="w-full">

@@ -4,7 +4,7 @@ import Nav from "../components/Nav.vue";
 </script>
 
 <template>
-    <div id="styleguide" class="relative">
+    <div id="styleguide" class="w-4/5 relative">
 
 
         <div class="grid gap-4 grid-cols-4 p-8">

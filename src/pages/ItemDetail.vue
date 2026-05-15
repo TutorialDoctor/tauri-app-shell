@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
 
-        <div id="music" class="w-full h-auto col-span-5 empty">
+        <div id="music" class="w-4/5 h-auto col-span-5 empty">
             <div class="flex justify-start gap-x-6">
 
                 <div id="itemDetails" class="md:p-8 mt-8 w-full">

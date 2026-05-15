@@ -62,7 +62,7 @@ const setting_groups = [
             { label: "Default Model", type: "textField", tooltip: "select box", model: "defaultModel" },
             { label: "LLM MODEL", type: "dropdown", tooltip: "select box", model: "llm", options: ['llama3.2', 'deepseek-r1:8b', 'gemma3:4b'] },
             { label: "TTS MODEL", type: "dropdown", tooltip: "select box", model: "tts", options: ['kitten', 'kokoro', 'e5'] },
-            { label: "GAN MODEL", type: "dropdown", tooltip: "select box", model: "gan", options: ['zit', 'klein', 'sd1'] },
+            { label: "GAN MODEL", type: "dropdown", tooltip: "select box", model: "gan", options: ['DreamShaper XL v2.1 Turbo (8-bit)', 'klein', 'sd1'] },
 
         ]
     },
@@ -111,10 +111,12 @@ const currentSetting = computed(() =>
                 class="dark:hover:bg-gray-800 hover:bg-gray-100 dark:bg-gray-800 p-2 rounded-md cursor-pointer">
                 <p class="text-xs">{{ section.group }}</p>
             </div>
-            <!-- DataViewer -->
+
+        </aside>
+        
+         <!-- DataViewer -->
             <div class="hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 p-3 break-all"> {{ store.settings }}</div>
             <!-- /DataViewer -->
-        </aside>
 
         
          <div class="w-1/5 mt-4 px-4">
@@ -140,12 +142,13 @@ const currentSetting = computed(() =>
                         <div class="mt-4">
                             <button class="text-center text-xs border border-gray-300 px-4 py-2 rounded-lg w-full">Show Data</button>
                         </div>
+                         <p class="text-xs">This application was developed by <a target="_blank" class="underline text-teal-500 font-semibold" href="https://tutorialdoctor.github.io">The Tutorial Doctor</a> The creator of <a target="_blank" class="underline text-purple-500 font-semibold" href="https://upskil.dev">upskil.dev</a></p>
                     </div>
          </div>
 
 
         <!-- Selected Section Only -->
-        <div id="chart" class="mt-4 w-1/3" v-if="currentSetting">
+        <div id="chart" class="mt-8 w-1/3" v-if="currentSetting">
             <p class="text-sm font-medium font-light">
                 {{ currentSetting.group }}
             </p>

@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="w-4/5">
                 <div id="main" class="mt-8 w-full">
 
                     <div class="flex justify-between">
