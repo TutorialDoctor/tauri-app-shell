@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { dataStore } from "../stores/store";
-// import { invoke, convertFileSrc } from "@tauri-apps/api/core";
+import { invoke, convertFileSrc } from "@tauri-apps/api/core";
 import { appDataDir, join, resolveResource } from '@tauri-apps/api/path';
 
 import { writeTextFile, readTextFile,BaseDirectory,readFile } from '@tauri-apps/plugin-fs';
@@ -9,7 +9,7 @@ import { writeTextFile, readTextFile,BaseDirectory,readFile } from '@tauri-apps/
 const jsonData = ref(null);
 
 async function loadStuff(){
-    const resourcePath = await resolveResource('resources/hello.json');
+    const resourcePath = await resolveResource('resources/data.json');
     console.log(resourcePath);
     const content = await readTextFile(resourcePath);
     jsonData.value = content;
@@ -18,7 +18,7 @@ async function loadStuff(){
 
 async function loadStuffOld(){
     // const resourcePath = await resolveResource('resources/hello.json');
-    const resourcePath = await resolveResource('hello.json');
+    const resourcePath = await resolveResource('data.json');
     console.log(resourcePath);
     // const langDe = await readFile(resourcePath);
     const content = await readTextFile(resourcePath);
@@ -145,7 +145,7 @@ onMounted(async () => {
 
 <template>
     <div class="p-4 w-full">
-        {{jsonData.name}}
+        <div v-if="jsonData">{{jsonData.name}}</div>
 
         {{ text }}
 

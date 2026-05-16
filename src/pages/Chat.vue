@@ -58,12 +58,12 @@ onMounted(() => {
 <!-- {{store.chat_history}} -->
         <div id="chat-box" class="mt-4 rounded-lg border border-gray-300 shadow-md">
             <div class="p-4 text-xs font-light flex items-start items-center">
-                <img class="rounded-full w-8 h-8 object-cover" :src="store.settings.avatar">
+                <img class="rounded-full w-10 h-10 object-cover object-top" :src="store.settings.avatar">
                 <div class="ml-3">
                     <p>Tutorial Doctor</p>
                     <p class="text-xs text-gray-500 dark:text-gray-200">m@example.com</p>
                 </div>
-                <button class="border p-2 w-8 h-8 flex items-center rounded-full text-center justify-center ml-auto">
+                <button class="border p-2 w-10 h-10 flex items-center rounded-full text-center justify-center ml-auto">
                     +
                 </button>
             </div>
@@ -72,7 +72,7 @@ onMounted(() => {
                     <div class="p-4">
                         <div id="chat-window" v-for="(message, ndx) in store.chat_history" :key="ndx">
                             <div class="flex items-center" v-if="ndx % 2 == 0">
-                                 <img class="rounded-full w-8 h-8 object-cover" :src="store.settings.aiAvatar">
+                                 <img class="rounded-full w-10 h-10 object-cover object-top" :src="store.settings.aiAvatar">
                                 <span 
                                 class="ml-2 w-1/4 text-left bg-gray-100 dark:bg-gray-800 p-2 rounded-lg flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2">{{
                                     message }}</span>
@@ -82,7 +82,7 @@ onMounted(() => {
                             <span
                                 class="text-left my-3 bg-black text-white p-2 rounded-lg flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 ml-auto">{{
                                     message }}</span>
-                                    <img class="ml-2 rounded-full w-8 h-8 object-cover" :src="store.settings.avatar">
+                                    <img class="ml-2 rounded-full w-10 h-10 object-cover object-top" :src="store.settings.avatar">
                             </div>
                         </div>
                     </div>

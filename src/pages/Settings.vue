@@ -212,7 +212,6 @@ const currentSetting = computed(() =>
                     <!-- Radio Group -->
                     <div v-else-if="field.type === 'radioGroup'" class="mt-4 grid grid-cols-3 gap-4 ">
                         <div v-for="option in field.options" :key="option">
-                            {{ field.label }}
                             <input :id="`${field.model}-${option}`" type="radio" :name="field.model" :value="option"
                                 v-model="store.settings[field.model]" />
                             <label class="ml-2" :for="`${field.model}-${option}`">
