@@ -15,6 +15,7 @@ import Chat from './pages/Chat.vue'
 import APi from './pages/API.vue'
 import Database from './pages/Database.vue'
 import FileSearch from './pages/FileSearch.vue'
+import Calendar from './pages/Calendar.vue'
 
 const routes = [
     { path: '/', component: Home, name: 'home' },
@@ -29,7 +30,8 @@ const routes = [
     { path: '/chat', component: Chat, name:"Chat" },
     { path: '/api', component: APi, name:"API" },
     { path: '/database', component: Database, name:"Database" },
-    { path: '/file-search', component: FileSearch, name:"File Search" }
+    { path: '/file-search', component: FileSearch, name:"File Search" },
+    { path: '/calendar', component: Calendar, name:"Calendar" }
 ]
 const router = createRouter({
     history: createMemoryHistory(),
