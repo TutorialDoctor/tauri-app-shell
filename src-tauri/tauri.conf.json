@@ -29,7 +29,8 @@
     "active": true,
     "targets": "all",
     "resources": [
-      "resources/**/*"
+      "resources/**/*",
+      "resources/data.json"
     ],
     "icon": [
       "icons/32x32.png",

@@ -49,6 +49,95 @@ async fn list_files(path: String) -> Result<Vec<String>, String> {
 
     Ok(files)
 }
+use std::path::Path;
+
+#[tauri::command]
+async fn list_audio(path: String) -> Result<Vec<String>, String> {
+    let entries = std::fs::read_dir(path).map_err(|e| e.to_string())?;
+
+    let mut audio_files = Vec::new();
+
+    for entry in entries {
+        let entry = entry.map_err(|e| e.to_string())?;
+        let path = entry.path();
+
+        if path.is_file() {
+            if let Some(ext) = path.extension() {
+                let ext = ext.to_string_lossy().to_lowercase();
+
+                if matches!(
+                    ext.as_str(),
+                    "mp3" | "wav" | "ogg" | "flac" | "m4a" | "aac" | "webm"
+                ) {
+                    audio_files.push(path.display().to_string());
+                }
+            }
+        }
+    }
+
+    Ok(audio_files)
+}
+
+#[tauri::command]
+async fn list_images(path: String) -> Result<Vec<String>, String> {
+    let mut images = Vec::new();
+
+    fn visit_dir(dir: &Path, images: &mut Vec<String>) -> Result<(), String> {
+        let entries = std::fs::read_dir(dir).map_err(|e| e.to_string())?;
+
+        for entry in entries {
+            let entry = entry.map_err(|e| e.to_string())?;
+            let path = entry.path();
+
+            if path.is_dir() {
+                // Recursively scan subdirectories
+                visit_dir(&path, images)?;
+            } else if let Some(ext) = path.extension() {
+                let ext = ext.to_string_lossy().to_lowercase();
+
+                // Supported image extensions
+                if matches!(
+                    ext.as_str(),
+                    "png"
+                        | "jpg"
+                        | "jpeg"
+                        | "gif"
+                        | "webp"
+                        | "bmp"
+                        | "svg"
+                        | "ico"
+                        | "tif"
+                        | "tiff"
+                ) {
+                    images.push(path.display().to_string());
+                }
+            }
+        }
+
+        Ok(())
+    }
+
+    visit_dir(Path::new(&path), &mut images)?;
+    Ok(images)
+}
+
+// List files in a directory, including hidden files
+#[tauri::command]
+async fn list_hidden_files(path: String) -> Result<Vec<String>, String> {
+    let entries = std::fs::read_dir(path).map_err(|e| e.to_string())?;
+
+    let mut files = Vec::new();
+
+    for entry in entries {
+        let entry = entry.map_err(|e| e.to_string())?;
+
+        // read_dir already returns hidden files (such as .gitignore, .DS_Store)
+        // as long as the operating system allows access to them.
+        files.push(entry.path().display().to_string());
+    }
+
+    Ok(files)
+}
 
 //Copy text to the clipboard
 use tauri_plugin_clipboard_manager::ClipboardExt;
@@ -104,6 +193,9 @@ pub fn run() {
             write_text_file,
             create_directory,
             list_files,
+            list_hidden_files,
+            list_images,
+            list_audio,
             copy_to_clipboard,
             read_clipboard,
             save_setting,

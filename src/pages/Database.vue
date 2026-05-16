@@ -175,7 +175,7 @@ onMounted(async () => {
         </div>
         <!--  -->
 
-        <div id="form" class="mt-4 p-4 rounded-lg border border-gray-300 shadow-md">
+        <form @submit.prevent="createOrUpdateUser()" id="form" class="mt-4 p-4 rounded-lg border border-gray-300 shadow-md">
 
             <p class="text-xs font-light font-semibold">Form Details</p>
             <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie settings here.
@@ -211,8 +211,8 @@ onMounted(async () => {
                         class="text-center text-xs bg-black text-white px-4 py-2 rounded-lg w-full">{{ buttonTitle }}</button>
                 </div>
             </div>
-        </div>
-        
+        </form>
+
         <div id="table" class="mt-4 col-span-2 p-4 rounded-lg border border-gray-300 shadow-md">
             <p class="hidden text-xs font-light font-semibold">Sidebar</p>
             <p class="hidden mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie
@@ -259,7 +259,7 @@ onMounted(async () => {
                             <div class="capitalize">{{ thisUser.id }}</div>
                         </td>
                         <td class="p-2 align-middle">
-                            <div class="lowercase">{{ thisUser.name }}</div>
+                            <div>{{ thisUser.name }}</div>
                         </td>
                         <td class="p-2 align-middle">
                             <div class="text-right font-medium">{{ thisUser.email }}</div>

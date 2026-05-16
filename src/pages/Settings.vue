@@ -4,6 +4,14 @@ import { dataStore } from "../stores/store";
 
 const store = dataStore();
 
+//Setting Builder
+// 1. select group
+// Add setting field
+// toggle 'has options' checkbox to conditionally show options array
+// adjust label, type, tooltip and model
+// add to group
+
+
 const setting_groups = [
     {
         group: "Basic Info",

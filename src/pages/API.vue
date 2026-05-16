@@ -1,10 +1,34 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { dataStore } from "../stores/store";
-import { invoke, convertFileSrc } from "@tauri-apps/api/core";
+// import { invoke, convertFileSrc } from "@tauri-apps/api/core";
 import { appDataDir, join, resolveResource } from '@tauri-apps/api/path';
 
 import { writeTextFile, readTextFile,BaseDirectory,readFile } from '@tauri-apps/plugin-fs';
+
+const jsonData = ref(null);
+
+async function loadStuff(){
+    const resourcePath = await resolveResource('resources/hello.json');
+    console.log(resourcePath);
+    const content = await readTextFile(resourcePath);
+    jsonData.value = content;
+    console.log(content)
+}
+
+async function loadStuffOld(){
+    // const resourcePath = await resolveResource('resources/hello.json');
+    const resourcePath = await resolveResource('hello.json');
+    console.log(resourcePath);
+    // const langDe = await readFile(resourcePath);
+    const content = await readTextFile(resourcePath);
+    //let textDecoder = new TextDecoder();
+    //let result = textDecoder.decode(langDe);
+    jsonData.value = content;
+    console.log(content)
+    // console.log(JSON.parse(result))
+}
+
 
 const store = dataStore();
 const data = ref(null);
@@ -87,6 +111,7 @@ onMounted(async () => {
     console.log("API Ready!");
     // saveFile();
     readBundleFile();
+    loadStuff();
     //URL.revokeObjectURL(imageSource.value);
     // openURL();
 
@@ -120,6 +145,7 @@ onMounted(async () => {
 
 <template>
     <div class="p-4 w-full">
+        {{jsonData.name}}
 
         {{ text }}
 
