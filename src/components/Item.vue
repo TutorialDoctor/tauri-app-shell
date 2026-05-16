@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { dataStore } from "../stores/store";
 const store = dataStore();
 
-const usePage = true;
+const usePage = true; //TODO: fix right nav issue when this is false
 
 const route = useRoute();
 const props = defineProps({

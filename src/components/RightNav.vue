@@ -17,7 +17,7 @@ function deleteAndRedirect(item) {
         <p class="text-sm font-light font-semibold">Discover</p>
         <p class="mt-1 text-gray-500 dark:text-gray-200" style="font-size: .70rem">Manage your cookie settings here.</p>
 
-        <RouterLink :to="{ name: 'item', params: { id: store.currentItem.id } }" v-if="store.currentItem"
+        <!-- <RouterLink :to="{ name: 'item', params: { id: store.currentItem.id } }" v-if="store.currentItem"
             id="current-item-card" class="hidden mt-4 text-left">
             <img class="hover:opacity-75 h-[260px] w-auto object-contain" :src="store.currentItem.cover" />
             <div>
@@ -27,7 +27,7 @@ function deleteAndRedirect(item) {
                 </p>
             </div>
             <hr class="mt-2" />
-        </RouterLink>
+        </RouterLink> -->
 
         <RouterLink to="{ name: 'item', params: { id: store.currentItem.id } }" v-if="store.currentItem"
             class="mt-4 flex">

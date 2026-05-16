@@ -25,6 +25,9 @@ onMounted(() => {
     const found = store.retrieveItem(Number(itemId));
     if (found) {
         item.value = found;
+    }
+    else if(store.currentItem){
+        item.value = store.currentItem
     } else {
         console.error("Item not found in store for ID:", itemId);
         store.setStatusMessage(`Item not found in store for ID ${itemID}`)
