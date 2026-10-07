@@ -1,0 +1,64 @@
+import { createApp } from "vue";
+import { createMemoryHistory, createRouter } from 'vue-router'
+import { createPinia } from 'pinia'
+import App from "./App.vue";
+import Home from './pages/Home.vue'
+import Settings from './pages/Settings.vue'
+import TestPage from './pages/TestPage.vue'
+import StyleGuide from './pages/StyleGuide.vue'
+import Login from './pages/Login.vue'
+import Register from './pages/Register.vue'
+import Items from './components/Items.vue'
+import ItemDetail from './pages/ItemDetail.vue'
+import DrawThings from './components/DrawThings.vue'
+import Chat from './pages/Chat.vue'
+import APi from './pages/API.vue'
+import Database from './pages/Database.vue'
+import FileSearch from './pages/FileSearch.vue'
+import Calendar from './pages/Calendar.vue'
+import CommandCenter from './pages/CommandCenter.vue'
+import PythonCoder from './pages/PythonCoder.vue'
+import TextToSpeech from './pages/TextToSpeech.vue'
+import ExistingDB from './pages/ExistingDB.vue'
+import Weather from './pages/Weather.vue'
+import MediaGallery from './pages/MediaGallery.vue'
+import PhotoUploader from './pages/PhotoUploader.vue'
+import ObsidianInterface from './pages/ObsidianInterface.vue'
+import ServerRunner from './pages/ServerRunner.vue'
+
+const routes = [
+    { path: '/', component: Home, name: 'home' },
+    { path: '/settings', component: Settings, name: 'Settings' },
+    { path: '/test-page', component: TestPage, name: 'testpage' },
+    { path: '/style-guide', component: StyleGuide, name: 'Style Guide' },
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/items', component: Items, name:"items" },
+    { name: 'item', path: '/item/:id', component: ItemDetail, props: true },
+    { path: '/draw', component: DrawThings, name:"Draw" },
+    { path: '/chat', component: Chat, name:"Chat" },
+    { path: '/api', component: APi, name:"API" },
+    { path: '/database', component: Database, name:"Database" },
+    { path: '/file-search', component: FileSearch, name:"File Search" },
+    { path: '/calendar', component: Calendar, name:"Calendar" },
+    { path: '/command-center', component: CommandCenter, name:"Command Center" },
+    { path: '/python-coder', component: PythonCoder, name:"Python Coder" },
+    { path: '/text-to-speech', component: TextToSpeech, name:"Text To Speech" },
+    { path: '/existing-db', component: ExistingDB, name:"Existing DB" },
+    { path: '/weather', component: Weather, name:"Weather" },
+    { path: '/gallery', component: MediaGallery, name:"Media Gallery" },
+    { path: '/photo-uploader', component: PhotoUploader, name:"Photo Uploader" },
+    { path: '/obsidian-interface', component: ObsidianInterface, name:"Obsidian Interface" },
+    { path: '/server-runner', component: ServerRunner, name:"Server Runner" }
+]
+const router = createRouter({
+    history: createMemoryHistory(),
+    routes,
+})
+
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(pinia)
+app.use(router)
+app.mount("#app")

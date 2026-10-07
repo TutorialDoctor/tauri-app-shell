@@ -1,0 +1,187 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "http:default",
+    "fs:allow-resource-read",
+    "upload:default",
+    "fs:default",
+    "fs:allow-applocaldata-write",
+    "store:default",
+    "sql:default",
+    "dialog:default",
+    "dialog:allow-save",
+    "clipboard-manager:default",
+    "fs:allow-read-text-file",
+    "fs:allow-read-file",
+    "sql:allow-execute",
+    "shell:allow-execute",
+    {
+      "identifier": "shell:allow-spawn",
+      "allow": [
+        {
+          "name": "python3",
+          "cmd": "python3",
+          "args": true
+        },
+        {
+          "name": "cd",
+          "cmd": "cd",
+          "args": true
+        }
+      ]
+    },
+    {
+      "identifier": "shell:allow-kill",
+      "allow": [
+        {
+          "name": "python3",
+          "cmd": "python3",
+          "args": true
+        }
+      ]
+    },
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "exec-sh",
+          "cmd": "sh",
+          "args": [
+            "-c",
+            {
+              "validator": "\\S+"
+            }
+          ],
+          "sidecar": false
+        },
+        {
+          "name": "echo",
+          "cmd": "echo",
+          "args": true
+        },
+        {
+          "name": "ls",
+          "cmd": "ls",
+          "args": true
+        },
+        {
+          "name": "touch",
+          "cmd": "touch",
+          "args": true
+        },
+        {
+          "name": "pwd",
+          "cmd": "pwd",
+          "args": true
+        },
+        {
+          "name": "mkdir",
+          "cmd": "mkdir",
+          "args": true
+        },
+        {
+          "name": "mv",
+          "cmd": "mv",
+          "args": true
+        },
+        {
+          "name": "cp",
+          "cmd": "cp",
+          "args": true
+        },
+        {
+          "name": "cd",
+          "cmd": "cd",
+          "args": true
+        },
+        {
+          "name": "cat",
+          "cmd": "cat",
+          "args": true
+        },
+        {
+          "name": "python3",
+          "cmd": "python3",
+          "args": true
+        },
+        {
+          "name": "obsidian",
+          "cmd": "obsidian",
+          "args": true
+        },
+        {
+          "name": "draw-things-cli",
+          "cmd": "draw-things-cli",
+          "args": true
+        }
+      ]
+    },
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "http://127.0.0.1:7860/sdapi/v1/txt2img"
+        },
+        {
+          "url": "http://127.0.0.1:5001"
+        },
+        {
+          "url": "http://127.0.0.1:4000"
+        },
+        {
+          "url": "http://127.0.0.1:4001"
+        },
+        {
+          "url": "http://127.0.0.1:*"
+        },
+        {
+          "url": "https://127.0.0.1:*"
+        }
+      ],
+      "deny": [
+        {
+          "url": "https://private.tauri.app"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        {
+          "path": "*/**"
+        },
+        {
+          "path": "$APPCONFIG/*"
+        },
+        {
+          "path": "$APPDATA/**"
+        },
+        {
+          "path": "$RESOURCES/**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-mkdir",
+      "allow": [{ "path": "$appData/gallery-media", "recursive": true }]
+    },
+    {
+      "identifier": "fs:allow-copy-file",
+      "allow": [
+        { "path": "$appData/gallery-media/*" }
+      ]
+    },
+    {
+      "identifier": "fs:allow-read-dir",
+      "allow": [{ "path": "$appData/gallery-media", "recursive": true }]
+    },
+    "shell:default"
+  ]
+}
